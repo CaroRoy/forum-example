@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container pt-5 pb-5">
+    <div class="row">
+        {% include "public/shared/_messages_flash.html.twig" %}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Mes articles</h3>
+                    <a href="{{ path('author_create') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Créer un article</a>
+                </div>
+                <div class="card-body">
+                    {% if posts | length > 0 %}
+                    <div class="row">
+                        {% for post in posts %}
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img src="{{ post.imageUrl }}" class="img-fluid">
+                                </div>
+                                <div class="card-header">
+                                    <h3>{{ post.title | upper }}</h3>
+                                    <br/>
+                                    <p>{{ post.createdAt | date('d-m-Y') }}</p>
+                                
+                                </div>
+                                <div class="card-body">
+                                    {{ post.content | truncate | raw }}
+                                </div>
+                           
+                                <div class="card-footer">
+                                    <a class="btn btn-sm btn-primary mt-3" href="{{ path('author_edit', {'id' : post.id }) }}">Modifier</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                        
+                    {% else %}
+                        <p>Tu as écris aucun article.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

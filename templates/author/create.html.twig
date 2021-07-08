@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container pt-5 pb-5">
+    <div class="row">
+        {% include "public/shared/_messages_flash.html.twig" %}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Créer un article</h3>
+                    <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Créer un article</a>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }} 
+
+                    {{ form_widget(form) }}
+
+                    <button class="btn btn-primary mt-3" type="submit"> Publier </button>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

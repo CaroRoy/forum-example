@@ -1,0 +1,45 @@
+body {
+    background-color: #6564DB !important;
+}
+
+nav.navbar.navbar-expand-lg 
+{
+    background-color: #27233A !important;
+}
+
+button.navbar-toggler
+{
+    background-color: #6564DB !important;
+}
+
+span.navbar-toggler-icon
+{
+    color: white !important;
+}
+
+span.navbar-toggler-icon i
+{
+    color: white !important;
+    position: relative;
+    top: -5px;
+    left: -2px;
+}
+
+.card 
+{
+    background-color: #C1B2AB !important;
+}
+
+label
+{
+    color: white;
+}
+
+.card-body p{
+    color: black !important;
+}
+
+.card-header p
+{
+    color:black;
+}
