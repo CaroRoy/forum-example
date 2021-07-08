@@ -32,3 +32,17 @@ Entity Comments
 ->author(User) ->ManyToOne
 ->post(Post) ->ManyToOne
 ->createdAt
+
+
+
+
+----------------
+DIDACTITIEL
+----------------
+1. composer install
+
+2. Configurer votre bdd 
+
+3. php bin/console d:d:c
+
+
