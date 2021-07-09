@@ -46,7 +46,7 @@ DIDACTITIEL
 
 3. php bin/console d:d:c
 
-4. php bin/console d:d:m --no-interaction
+4. php bin/console d:m:m --no-interaction
 
 4. reinstaller CKeditor
 
