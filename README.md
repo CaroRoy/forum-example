@@ -19,6 +19,7 @@ Administrateur ->[« ROLE_ADMIN »]
 Accès à tous les utilisateurs. 
 L’identité
 Peut tout faire dans le site
+Donner le Role : ROLE_MODERATOR
 
 Entity POST :
 ->title
@@ -44,5 +45,16 @@ DIDACTITIEL
 2. Configurer votre bdd 
 
 3. php bin/console d:d:c
+
+4. php bin/console d:d:m --no-interaction
+
+4. reinstaller CKeditor
+
+-> composer require friendsofsymfony/ckeditor-bundle
+
+-> php bin/console ckeditor:install
+
+-> php bin/console assets:install public
+
 
 

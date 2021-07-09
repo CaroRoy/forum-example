@@ -38,9 +38,6 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(
-     *      message="Vous devez ajouter une photo principale."
-     * )
      */
     private $imageUrl;
 
