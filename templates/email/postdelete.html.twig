@@ -1,0 +1,58 @@
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+        img {
+            height:150px;
+            object-fit: contain;
+            text-align: center;
+            margin: 0 auto;
+        }
+        button {
+            padding:10px;
+            border: 2px solid #33658A;
+            color: white;
+            background-color: #33658A;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .divImage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .divText {
+            text-align: center;
+        }
+        button {
+            cursor: pointer !important;
+        }
+        button.buttonConfirm {
+            cursor: pointer !important;
+        }
+        .aConfirm {
+            cursor: pointer !important;
+        }
+        .linkConfirm {
+            cursor: pointer !important;
+        }
+    </style>
+
+    <div class="divImage">
+        <img src="{{ email.image('@images/defaut.png') }}" alt="logo-moyen">
+    </div>
+{% endapply %}
+<div class="divText">
+    <h3>
+        Bonjour {{ post.author.getPseudo() }} , votre article a été supprimé.
+    </h3>
+    <p>
+        Détail article : {{ post.title }}
+    </p>
+    <p>
+        Id article : {{ post.id }}
+    </p>
+    <div class="divImage">
+        <img src="{{ email.image('@images/defaut.png') }}" alt="logo-moyen">
+    </div>
+</div>
+

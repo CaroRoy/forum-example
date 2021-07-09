@@ -9,9 +9,11 @@
        
         <div class="col-12">
             <div class="card">
-                <div class="card-img-top">
+                {% if post.imageUrl is not same as null %}
                     <img src="{{ post.imageUrl }}" class="img-fluid">
-                </div>
+                {% else %}
+                    <img src="{{ asset('images/defaut.png') }}" class="img-fluid">
+                {% endif %}
                 <div class="card-header">
                     <h3>{{ post.title | upper }}</h3>
                     <br/>

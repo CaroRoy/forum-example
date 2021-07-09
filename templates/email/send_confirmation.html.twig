@@ -1,0 +1,68 @@
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+        img {
+            height:150px;
+            object-fit: contain;
+            text-align: center;
+            margin: 0 auto;
+        }
+        button {
+            padding:10px;
+            border: 2px solid #33658A;
+            color: white;
+            background-color: #33658A;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .divImage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .divText {
+            text-align: center;
+        }
+        button {
+            cursor: pointer !important;
+        }
+        button.buttonConfirm {
+            cursor: pointer !important;
+        }
+        .aConfirm {
+            cursor: pointer !important;
+        }
+        .linkConfirm {
+            cursor: pointer !important;
+        }
+    </style>
+
+    <div class="divImage">
+        <img src="{{ email.image('@images/defaut.png') }}" alt="logo-moyen">
+    </div>
+{% endapply %}
+<div class="divText">
+    <h3>
+        Bonjour {{ user.getPseudo() }} , veuillez confirmer votre email.
+    </h3>
+
+    <p>
+        Svp, cliquez sur le bouton pour confirmer votre email.
+    </p>
+    <p>
+        <a class="aConfirm" href="{{ url('app_confirm_token', {'confirmationAccountToken' : user.getConfirmationAccountToken()}) }}">
+            <button class="buttonConfirm">Confirmer mon compte</button>
+        </a>
+    </p>
+    <p>
+        Si le bouton ne fonctionne pas, cliquez sur le lien ci-dessous :
+        <p class="linkConfirm">
+            <a href="{{ url('app_confirm_token', {'confirmationAccountToken' : user.getConfirmationAccountToken()}) }}">
+            {{ url('app_confirm_token', {'confirmationAccountToken' : user.getConfirmationAccountToken()}) }}
+            </a>
+        </p>
+    </p>
+    <div class="divImage">
+        <img src="{{ email.image('@images/defaut.png') }}" alt="logo-moyen">
+    </div>
+</div>

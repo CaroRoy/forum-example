@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container pt-5 pb-5">
+    <div class="row">
+        {% include "public/shared/_messages_flash.html.twig" %}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-link" href="{{ path('admin_user_list') }}">Retour</a>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Utilisateur : {{ user.pseudo | upper}}</h3>
+                </div>
+                <div class="card-body">
+                    <p>Role : {{ user.roles[0] }}</p>
+                    <p>Email : {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Statistiques</h3>
+                </div>
+                <div class="card-body">
+                    <p>Nombre d'articles publiés : {{ posts | length}}</p>
+                    <p>Nombre de commentaires publiés : {{ comments | length}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Assigner un nouveau rôle</h3>
+                </div>
+                <div class="card-body">
+                    <p>Attention : Un utilisateur ne peut avoir qu'un seul rôle.</p>
+                    {% if user.roles[0] is same as "ROLE_USER" %}
+                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_author',{'id' : user.id }) }}">Assigner rôle : auteur</a>
+                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_moderator',{'id' : user.id }) }}">Assigner rôle : modérateur</a>
+                    {% endif %}
+                      {% if user.roles[0] is same as "ROLE_AUTHOR" %}
+                        <a class="btn btn-sm btn-danger" href="{{ path('admin_user_role_delete',{'id' : user.id }) }}">Retirer rôle : auteur</a>
+                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_moderator',{'id' : user.id }) }}">Assigner rôle : modérateur</a>
+                    {% endif %}
+                    {% if user.roles[0] is same as "ROLE_MODERATOR" %}
+                        <a class="btn btn-sm btn-info" href="{{ path('admin_user_role_author',{'id' : user.id })}}">Assigner rôle : auteur</a>
+                        <a class="btn btn-sm btn-danger" href="{{ path('admin_user_role_delete',{'id' : user.id }) }}">Retirer rôle : modérateur</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -54,7 +54,7 @@ class EditPostController extends AbstractController
             return $this->redirectToRoute('author_home');
         }
 
-        return $this->render('author/create.html.twig',[
+        return $this->render('author/edit.html.twig',[
             'form' => $form->createView()
         ]);
     }

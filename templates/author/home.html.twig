@@ -16,13 +16,15 @@
                     {% if posts | length > 0 %}
                     <div class="row">
                         {% for post in posts %}
-                        <div class="col-12 col-md-6 col-lg-3">
+                        <div class="col-12 col-md-6 col-lg-4">
                             <div class="card">
-                                <div class="card-img-top">
+                               {% if post.imageUrl is not same  as null %}
                                     <img src="{{ post.imageUrl }}" class="img-fluid">
-                                </div>
+                                {% else %}
+                                    <img src="{{ asset('images/defaut.png') }}" class="img-fluid">
+                                {% endif %}
                                 <div class="card-header">
-                                    <h3>{{ post.title | upper }}</h3>
+                                    <h5>{{ post.title  }}</h5>
                                     <br/>
                                     <p>{{ post.createdAt | date('d-m-Y') }}</p>
                                 
@@ -30,9 +32,16 @@
                                 <div class="card-body">
                                     {{ post.content | truncate | raw }}
                                 </div>
+                                <div class="card-footer">
+                                {% if post.status is same as "Publié" %}
+                                    <p style="color:green">Statut : {{ post.status }} <i class="fas fa-check"></i></p>
+                                {% else %}
+                                    <p style="color:red">Statut : {{ post.status }} <i class="fas fa-book"></i></p>
+                                {% endif %}
+                                </div>
                            
                                 <div class="card-footer">
-                                    <a class="btn btn-sm btn-primary mt-3" href="{{ path('author_edit', {'id' : post.id }) }}">Modifier</a>
+                                    <a style="width:100%" class="btn btn-sm btn-primary mt-3" href="{{ path('author_edit', {'id' : post.id }) }}">Modifier</a>
                                 </div>
                             </div>
                         </div>

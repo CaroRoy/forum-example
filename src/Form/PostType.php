@@ -23,7 +23,8 @@ class PostType extends AbstractType
             ])
             ->add('imageUrl',FileType::class,[
                 'label' => 'Image principale',
-                'mapped' => false
+                'mapped' => false,
+                'required' => false
             ])
         ;
     }

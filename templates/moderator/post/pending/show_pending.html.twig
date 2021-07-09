@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container pt-5 pb-5" id="containerPage">
+    <div class="row">
+        {% include "public/shared/_messages_flash.html.twig" %}
+    </div>
+    <div class="row">
+       <div class="col-12">
+            <a class="btn btn-link" href="{{ path('moderator_post_unpublish_list') }}">Retour</a>
+        </div>
+        <div class="col-12  mt-3">
+             <div class="card">
+                <div class="card-header">
+                    <h5>Voulez vous publier cette article ?</h5>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-success" href="{{ path('moderator_publish_post', {'id' : post.id }) }}" >Publié</a>
+                    <a class="btn btn-info" href="{{ path('moderator_doitagain_post', {'id' : post.id }) }}">A refaire</a>
+                    <a class="btn btn-danger" id="js-openModalDelete">Supprimer</a>
+                </div>
+             </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="card">
+                {% if post.imageUrl is not same as null %}
+                    <img src="{{ post.imageUrl }}" class="img-fluid">
+                {% else %}
+                    <img src="{{ asset('images/defaut.png') }}" class="img-fluid">
+                {% endif %}
+                <div class="card-header">
+                    <h3>{{ post.title | upper }}</h3>
+                    <br/>
+                    <p>{{ post.createdAt | date('d-m-Y') }}</p>
+                
+                </div>
+                <div class="card-body">
+                    {{ post.content | raw }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% include "moderator/shared/_modal_delete_post.html.twig" with {'id' : post.id }  %}
+
+<script src={{asset('js/deleteModeratorPostModal.js')}}></script>
+
+{% endblock %}

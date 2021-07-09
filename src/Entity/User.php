@@ -69,6 +69,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isEnabled = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $confirmationAccountToken;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -232,6 +242,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->isEnabled;
+    }
+
+    public function setEnabled(bool $isEnabled): self
+    {
+        $this->isEnabled = $isEnabled;
+
+        return $this;
+    }
+
+    public function getConfirmationAccountToken(): ?string
+    {
+        return $this->confirmationAccountToken;
+    }
+
+    public function setConfirmationAccountToken(string $confirmationAccountToken): self
+    {
+        $this->confirmationAccountToken = $confirmationAccountToken;
 
         return $this;
     }

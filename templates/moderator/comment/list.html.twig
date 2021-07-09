@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container pt-5 pb-5">
+    <div class="row">
+        {% include "public/shared/_messages_flash.html.twig" %}
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% if app.user.roles[0] is same as "ROLE_MODERATOR" %}
+                <a class="btn btn-link" href="{{ path('moderator_home') }}">Retour</a>
+            {% elseif app.user.roles[0] is same as "ROLE_ADMIN" %}
+                <a class="btn btn-link" href="{{ path('admin_home') }}">Retour</a>
+            {% endif %}
+        </div>
+        <div class="col-12 mt-3">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h3>Les commentaires signalés</h3>
+                </div>
+                <div class="card-body">
+                   <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Auteur</th>
+                                <th>Contenu</th>
+                                <th></th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                {% for comment in comments %}
+                                    <tr>
+                                        <td>{{ comment.author.pseudo }}</td>
+                                        <td>{{ comment.content | raw }}</td>
+                                        <td>
+                                            <a href="{{ path('moderator_comment_hidden', {'id' : comment.id})}}">
+                                                <i class="fas fa-trash" style="color:red;"></i>
+                                            </a>
+                                        </td>
+                                         <td>
+                                            <a href="{{ path('moderator_comment_valid', {'id' : comment.id})}}">
+                                                <i class="fas fa-check" style="color:green;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

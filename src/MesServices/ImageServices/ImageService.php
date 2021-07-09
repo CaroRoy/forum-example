@@ -3,6 +3,7 @@
 namespace App\MesServices\ImageServices;
 
 
+use App\Entity\Post;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 
 class ImageService
@@ -14,7 +15,7 @@ class ImageService
         $this->containerBag = $containerBag;
     }
 
-    public function save(object $image, object $entity)
+    public function save(object $image = null, object $entity)
     {
         if($image !== null)
         {
@@ -22,7 +23,7 @@ class ImageService
         }
     }
 
-    public function edit(object $image, object $entity,string $imageOriginal)
+    public function edit(object $image = null, object $entity,string $imageOriginal)
     {
         if($image !== null)
         {
@@ -36,7 +37,7 @@ class ImageService
     public function deleteImage(string $imageUrl)
     {
         //Processus de supression de l'image précédente
-        if($imageUrl !== null)
+        if($imageUrl !== null && $imageUrl !== Post::IMAGE_DEFAUT_PATH)
         {
             $fileImageOriginal = $this->containerBag->get('app_images_directory') . '/..' . $imageUrl;
 

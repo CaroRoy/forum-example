@@ -1,0 +1,15 @@
+<div class="col-12 mt-4">
+    <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3>Gérer les commentaires</h3>
+        </div>
+        <div class="card-body">
+            {% if comments | length > 0 %}
+                <p>Il y a {{ comments | length }} commentaires signalés à vérifier.</p>
+                <a class="btn btn-primary btn-sm" href="{{ path('moderator_comment_signal_list') }}">Liste des commentaires</a>
+            {% else %}
+                <p>Il n'y aucun commentaire signalé.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

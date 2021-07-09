@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container pt-5 pb-5">
+    <div class="row">
+        {% include "public/shared/_messages_flash.html.twig" %}
+    </div>
+    <div class="row">
+        {% include "moderator/shared/_handle_comments.html.twig" with {'comments' : comments} %}
+        {% include "moderator/shared/_handle_articles.html.twig" with {'posts' : posts} %}
+    </div>
+</div>
+{% endblock %}

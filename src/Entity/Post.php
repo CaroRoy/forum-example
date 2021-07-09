@@ -13,6 +13,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
+    const PUBLISH = 'Publié';
+    const PENDING = 'Brouillon';
+
+    const IMAGE_DEFAUT_PATH = '/images/defaut.png';
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -39,12 +45,17 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $imageUrl;
+    private $imageUrl = self::IMAGE_DEFAUT_PATH;
 
     /**
      * @ORM\Column(type="date")
      */
     private $createdAt;
+
+      /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status = self::PENDING;
 
     /**
      * @ORM\Column(type="date", nullable=true)
@@ -180,6 +191,18 @@ class Post
                 $comment->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

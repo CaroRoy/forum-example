@@ -6,18 +6,20 @@
         {% include "public/shared/_messages_flash.html.twig" %}
     </div>
     <div class="row">
-        <div class="col-12">
+     <div class="col-12">
+            <a class="btn btn-link" href="{{ path('author_home') }}">Retour</a>
+        </div>
+        <div class="col-12 mt-3">
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h3>Créer un article</h3>
-                    <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Créer un article</a>
                 </div>
                 <div class="card-body">
                     {{ form_start(form) }} 
 
                     {{ form_widget(form) }}
 
-                    <button class="btn btn-primary mt-3" type="submit"> Publier </button>
+                    <button class="btn btn-primary mt-3" type="submit"> Enregistrer </button>
 
                     {{ form_end(form) }}
                 </div>
