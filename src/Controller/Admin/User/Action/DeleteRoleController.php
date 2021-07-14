@@ -26,7 +26,7 @@ class DeleteRoleController extends AbstractController
 
         $em->flush();
 
-        $this->addFlash('success','L\'utilisateur est redevenu un simple : User');
+        $this->addFlash('success','L\'utilisateur est redevenu simple User');
 
         return $this->redirectToRoute('admin_user_show',[ 'id' => $id]);
     }

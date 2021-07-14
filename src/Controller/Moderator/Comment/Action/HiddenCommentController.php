@@ -19,7 +19,7 @@ class HiddenCommentController extends AbstractController
 
         if(!$comment)
         {
-            $this->addFlash('danger','Ce commentaire existe pas.');
+            $this->addFlash('danger','Ce commentaire n\'existe pas.');
             return $this->redirectToRoute('moderator_comment_signal_list');
         }
 

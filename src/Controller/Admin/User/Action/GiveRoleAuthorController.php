@@ -28,7 +28,7 @@ class GiveRoleAuthorController extends AbstractController
 
         $em->flush();
 
-        $this->addFlash('success','L\'utilisateur a bien le rôle : Auteur');
+        $this->addFlash('success','L\'utilisateur a bien le rôle Auteur');
 
         return $this->redirectToRoute('admin_user_show',[ 'id' => $id]);
     }

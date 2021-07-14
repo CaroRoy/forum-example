@@ -38,7 +38,7 @@ class UserConfirmationSecurity
         {
             $user->setEnabled(true);
             $this->em->flush();
-            $message = 'Merci pour la confirmation. Vous pouvez maintenant vous connectez.';
+            $message = 'Merci pour la confirmation. Tu peux maintenant te connecter.';
             $this->flashBag->add('success', $message);
         }
     }

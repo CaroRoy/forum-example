@@ -22,7 +22,7 @@ class SignalCommentController extends AbstractController
 
         if(!$comment)
         {
-            $this->addFlash('danger','Le commentaire existe pas.');
+            $this->addFlash('danger','Ce commentaire n\'existe pas.');
 
             return $this->redirectToRoute('public_home');
         }

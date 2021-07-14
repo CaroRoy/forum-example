@@ -29,7 +29,7 @@ class GiveRoleModeratorController extends AbstractController
 
         $em->flush();
 
-        $this->addFlash('success','L\'utilisateur a bien le rôle : Modérateur');
+        $this->addFlash('success','L\'utilisateur a bien le rôle Modérateur');
 
         return $this->redirectToRoute('admin_user_show',[ 'id' => $id]);
     }

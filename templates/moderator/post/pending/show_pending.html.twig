@@ -12,11 +12,11 @@
         <div class="col-12  mt-3">
              <div class="card">
                 <div class="card-header">
-                    <h5>Voulez vous publier cette article ?</h5>
+                    <h5>Publier cette article ?</h5>
                 </div>
                 <div class="card-body">
                     <a class="btn btn-success" href="{{ path('moderator_publish_post', {'id' : post.id }) }}" >Publié</a>
-                    <a class="btn btn-info" href="{{ path('moderator_doitagain_post', {'id' : post.id }) }}">A refaire</a>
+                    <a class="btn btn-info" href="{{ path('moderator_doitagain_post', {'id' : post.id }) }}">A améliorer</a>
                     <a class="btn btn-danger" id="js-openModalDelete">Supprimer</a>
                 </div>
              </div>
